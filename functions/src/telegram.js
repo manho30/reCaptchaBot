@@ -1,3 +1,8 @@
+/**                  created by @manho MIT License 2022. 
+                     Support in Google App Script 
+**/
+
+// post method to telegram server. 
 const postTelegram = (payload) => {
     const data = {
         'contentType': 'application/json',
@@ -15,14 +20,18 @@ const postTelegram = (payload) => {
         return `{e}`
     }
 }
-const testApi = () => {
-    var payload = {
-        "method": "sendMessage",
-        "chat_id": owner, 
-        "text": "Hello World",
-    }
-    postTelegram(payload)
-}
+
+// for manho debug
+//const testApi = () => {
+//    var payload = {
+//        "method": "sendMessage",
+//        "chat_id": owner, 
+//        "text": "Hello World",
+//    }
+//    postTelegram(payload)
+//}
+
+
 const doPost = (e) => {
     var body = JSON.parse(e.postData.contents);
     Logger.log(body)
