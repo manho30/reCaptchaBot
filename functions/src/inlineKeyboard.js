@@ -1,3 +1,9 @@
+/**                  created by @manho MIT License 2022. 
+                     Support in Google App Script 
+**/
+
+// generate inline keyboard. 
+
 const generateInlineKeyboardMarkup = (buttons, numberOfButtonsPerRow) => {
 	var inlineKeyboardMarkup = {};
 	inlineKeyboardMarkup.inline_keyboard = [];
