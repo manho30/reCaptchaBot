@@ -1,4 +1,9 @@
-// regex check is the name is arab. 
+/**                  created by @manho MIT License 2022. 
+                     Support in Google App Script 
+**/
+
+// regex check is the name is arab.  
+
 const isarabic = (text) => {
     const regex = new RegExp(
     "[\u0600-\u06ff]|[\u0750-\u077f]|[\ufb50-\ufc3f]|[\ufe70-\ufefc]");
