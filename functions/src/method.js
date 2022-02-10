@@ -1,3 +1,9 @@
+/**                  created by @manho MIT License 2022. 
+                     Support in Google App Script 
+**/
+
+// action in Telegram.
+
 const sendMessage = (chat_id,text,reply_markup) => {
     if(!reply_markup){
         reply_markup = ""
