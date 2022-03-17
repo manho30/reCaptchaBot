@@ -19,37 +19,24 @@ const bot = (body) => {
                     var n1 = answer + 1;
                     var n2 = answer + 2;
                     var n3 = answer - 1;
-                    var n4 = answer;
-                    var n5 = answer - 2;
+                    var n4 = answer - 2;
+                    var answerOption = {
+                        "text": answer,
+                        "callback_data": "re:true" + body.message.new_chat_member.id
+} 
+                    const options = [n1, n2, n3, n4];
                     // buttons
-                    const buttons = [{
-                            "text": n1,
+                    const buttons = [];
+                    for (var i = 0; i < 4; i++){
+                        var option = {
+                            "text": options[i + 1],
                             "callback_data": "re:false" + body.message.new_chat_member.id
-                        },
-                        {
-                            "text": n2,
-                            "callback_data": "re:false" + body.message.new_chat_member.id
-                        },
-                        {
-                            "text": n3,
-                            "callback_data": "re:false" + body.message.new_chat_member.id
-                        },
-                        {
-                            "text": n4,
-                            "callback_data": "re:true" + body.message.new_chat_member.id
-                        },
-                        {
-                            "text": n5,
-                            "callback_data": "re:false" + body.message.new_chat_member.id
-                        },
-                        {
-                            "text": "封禁(管理员)",
-                            "callback_data": "re:ban" + body.message.new_chat_member.id
-                        },
-
-                    ]
+                        }
+                        buttons.push(option);
+                    } 
+                    buttons.push(answerOption);
                     return [mute(body.message.chat.id, body.message.new_chat_member.id, 0), sendMessage(body.message.chat.id, getMentionName(body.message.new_chat_member) + " 欢迎加入本群，" +
-                        "请根据提示完成人机验证\n\n" + qe1 + " + " + qe2 + " = ❓❓\n\n管理员点击任意按钮新成员可通过。", generateInlineKeyboardMarkup(buttons, 5)), deleteMessage(body.message.chat.id, body.message.message_id)]
+                        "请根据提示完成人机验证\n\n" + qe1 + " + " + qe2 + " = ❓❓\n\n管理员点击任意按钮新成员可通过。", generateInlineKeyboardMarkup(shuffle(buttons), 5)), deleteMessage(body.message.chat.id, body.message.message_id)]
                 } else {
                     // kick arab. 
                     return [kick(body.message.chat.id, body.message.new_chat_member.id), sendMessage(body.message.chat.id, `本群群员无法理解阿拉伯语，已清除。${getMentionName(body.message.new_chat_member)} \n（耶，又干走了一个小清真！）}`)]
